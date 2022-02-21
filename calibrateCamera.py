@@ -82,7 +82,8 @@ Now that we have our object points and image points,
 print('\nCalibrating...')
 ret, mtx, dist, rvecs, tvecs = cv.calibrateCamera(objpoints, imgpoints, gray.shape[::-1], None, None)
 print("\nCalibration Successful!")
-
+# print(type(ret), type(mtx), type(dist), type(rvecs), type(tvecs))
+print( mtx.shape, dist.shape)
 # Saving the calibration parameters in a yaml file
 calibration = {'ret': ret, 'mtx': mtx.tolist(), 'dist': dist.tolist()}
 with open('LogitechC310.yaml', 'w') as outfile:
