@@ -1,7 +1,6 @@
-cameraCalibrator
+## cameraCalibrator
 
-Warning: The checkerboard must be asymmetric: one side should be even, and the other<br>
-should be odd. Otherwise, the orientation of the board may be detected incorrectly.
+> Warning: The checkerboard must be asymmetric: one side should be even, and the other should be odd. Otherwise, the orientation of the board may be detected incorrectly.
 
 			Standard Errors of Estimated Camera Parameters
 			----------------------------------------------
