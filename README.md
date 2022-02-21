@@ -1,2 +1,5 @@
-# CamCalib-OCV
-Camera Calibration using OpenCV
+# Camera Calibration using OpenCV
+
+## Source images
+
+![](figures/srcimgs.png)
