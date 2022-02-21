@@ -81,13 +81,13 @@ Now that we have our object points and image points,
 
 print('\nCalibrating...')
 ret, mtx, dist, rvecs, tvecs = cv.calibrateCamera(objpoints, imgpoints, gray.shape[::-1], None, None)
-new_camera_matrix, roi = cv.getOptimalNewCameraMatrix(mtx, dist, (w,h), 1, (w,h))
-roi = np.array(roi).astype(int) #  can be used to crop the resulting images
+print("\nCalibration Successful!")
 
-calibration = {'ret': ret, 'mtx': mtx.tolist(), 'dist': dist.tolist(), 'ncm': new_camera_matrix.tolist(), 'roi': roi.tolist()}
+# Saving the calibration parameters in a yaml file
+calibration = {'ret': ret, 'mtx': mtx.tolist(), 'dist': dist.tolist()}
 with open('LogitechC310.yaml', 'w') as outfile:
         yaml.dump(calibration, outfile)
 
-print("\nCalibration Successful!")
+# print the camera calibration matrix and distortion coefficients
 print("\nCamera Matrix: \n", mtx)
 print("\nDistortion Coefficients: \n", dist)
