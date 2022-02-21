@@ -5,6 +5,9 @@ Created on Mon Feb 21 10:08:05 2022
 @author: Bimalka Piyaruwan
 @script: captureImages.py
 @description: This script captures images from the camera and saves them in the specified directory.
+@sources: 
+    https://github.com/kevinam99/capturing-images-from-webcam-using-opencv-python/blob/master/webcam-capture-v1.01.py
+    
 """
 # Importing the required libraries
 import cv2 as cv
