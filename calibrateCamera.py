@@ -5,11 +5,15 @@ Created on Mon Feb 21 10:12:36 2022
 @author: Bimalka Piyaruwan
 @script: calibrateCamera.py
 @description: This script calibrates the camera and saves the calibration parameters in the specified directory.
+@sources:
+        https://github.com/chenyr0021/camera_calibration_tool/blob/master/calibration.py
+
 """
 # Importing the required libraries
 import cv2 as cv
 import numpy as np
 import glob
+import  yaml
 
 # define Number of <<inner>> corners per a chessboard row and column
 PatternSize = (9,7)
@@ -30,6 +34,7 @@ imgpoints = [] # 2d points in image plane.
 # Extracting path of individual image stored in a given directory
 images = glob.glob('./images/*.jpg')
 ImageCount = 0
+WindowSize = (5,5) # Half of the side length of the search window for cornerSubPix()
 
 for fname in images:
     img = cv.imread(fname)
@@ -37,8 +42,7 @@ for fname in images:
     # Find the chess board corners
     # If desired number of corners are found in the image then ret = true
     ret, corners = cv.findChessboardCorners(gray, PatternSize, cv.CALIB_CB_ADAPTIVE_THRESH + cv.CALIB_CB_FAST_CHECK + cv.CALIB_CB_NORMALIZE_IMAGE)
-    print(corners)
-
+    
     """
     If desired number of corner are detected,
     we refine the pixel coordinates and display 
@@ -46,41 +50,44 @@ for fname in images:
     """
 
     if ret == True:
-        print("Chessboard Detected")
+        print("Chessboard Detected in Image: ", ImageCount)
 
         objpoints.append(objp)
+
         # refining pixel coordinates for given 2d points.
-        corners2 = cv.cornerSubPix(gray, corners, (SquareSize//2, SquareSize//2), (-1,-1), criteria)
-        
+        corners2 = cv.cornerSubPix(gray, corners, WindowSize, (-1,-1), criteria)
+
         imgpoints.append(corners2)
 
         # Draw and display the corners
-        img = cv.drawChessboardCorners(img, PatternSize, corners2, ret)   
-        cv.imshow('Image' + str(ImageCount),img)
-        cv.waitKey(0)
+        #img = cv.drawChessboardCorners(img, PatternSize, corners2, ret)   
+        #cv.imshow('Image' + str(ImageCount),img)
+        #cv.waitKey(0)
 
     ImageCount+=1
 cv.destroyAllWindows()
 
-# Calibrating the camera
+# ++++++++++++++Calibrating the camera++++++++++++++
 
-# height and width of the image
+# height and width of the image: (480, 640, 3)
 h,w = img.shape[:2]
 
 """
-Performing camera calibration by 
-passing the value of known 3D points (objpoints)
-and corresponding pixel coordinates of the 
-detected corners (imgpoints)
+Now that we have our object points and image points,
+ we are ready to go for calibration. 
+ We can use the function, cv.calibrateCamera() which returns the 
+ camera matrix, distortion coefficients, rotation and translation vectors etc.
 """
+
 print('\nCalibrating...')
 ret, mtx, dist, rvecs, tvecs = cv.calibrateCamera(objpoints, imgpoints, gray.shape[::-1], None, None)
-new_camera_matrix, roi = cv.getOptimalNewCameraMatrix(mtx, dist, (w,h), 1)
-roi = np.array(roi).astype(int)
+new_camera_matrix, roi = cv.getOptimalNewCameraMatrix(mtx, dist, (w,h), 1, (w,h))
+roi = np.array(roi).astype(int) #  can be used to crop the resulting images
 
-print("Camera matrix : \n")
-print(mtx)
-print("dist : \n")
-print(dist)
-print("new_camera_matrix : \n")
-print(new_camera_matrix)
+calibration = {'ret': ret, 'mtx': mtx.tolist(), 'dist': dist.tolist(), 'ncm': new_camera_matrix.tolist(), 'roi': roi.tolist()}
+with open('LogitechC310.yaml', 'w') as outfile:
+        yaml.dump(calibration, outfile)
+
+print("\nCalibration Successful!")
+print("\nCamera Matrix: \n", mtx)
+print("\nDistortion Coefficients: \n", dist)

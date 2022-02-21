@@ -12,11 +12,14 @@ Created on Mon Feb 21 10:08:05 2022
 # Importing the required libraries
 import cv2 as cv
 
+# device id of the camera
+DevID = 1
+
 # Initialize the usb camera
-camera = cv.VideoCapture(1)
+camera = cv.VideoCapture(DevID)
 
 # Define the directory where the images will be saved
-directory = "./images/"
+directory = "../images/"
 
 # number of the image
 image_number = 0
