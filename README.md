@@ -22,3 +22,30 @@ Distortion Coefficients:
 ![](figures/srcimgs.png)
 
 ## Method 2: Chess board was kept stationary at XY plane, (so Z=0 always) and camera was moved accordingly
+
+```
+Camera Matrix:
+ [[822.63896404   0.         321.51943526]
+ [  0.         821.2420443  235.09146444]
+ [  0.           0.           1.        ]]
+
+Distortion Coefficients:
+ [[ 2.50484044e-02  4.93438361e-01 -4.12081388e-03  3.21794242e-05 -3.72201958e-01]]
+```
+
+![](figures/srcimgs2.png)
+
+# Results obtained using MATLAB Camera Calibrator Toolbox
+
+## Method 1: Static camera
+
+```
+Intrinsics
+----------
+Focal length (pixels):   [  824.7671 +/- 0.8882      824.4779 +/- 0.8436  ]
+Principal point (pixels):[  320.9127 +/- 0.4406      244.1256 +/- 0.5253  ]
+Radial distortion:       [    0.0353 +/- 0.0098        0.3445 +/- 0.0928  ]
+
+```
+
+## Method 2: Chess board was kept stationary

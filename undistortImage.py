@@ -26,7 +26,8 @@ with open('./LogitechC310.yaml', 'r') as stream:
         print(exc)
 
 # path to distorted images
-images = glob.glob('./images/*.jpg')
+# images = glob.glob('./images-static_camera/*.jpg')
+images = glob.glob('./images-static_checkerboard/*.jpg')
 ImageCount = 0
 
 for fname in images:
