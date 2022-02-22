@@ -3,7 +3,7 @@ Created on Mon Feb 21 10:08:05 2022
 
 @author: Bimalka Piyaruwan
 @script: undistortImage.py
-@description: This script captures images from the camera and saves them in the specified directory.
+@description: This script undistorts the image using the calibration parameters.
 @sources: 
     https://github.com/smidm/video2calibration/blob/master/undistort.py
     
@@ -19,15 +19,15 @@ import  yaml
 #                   'mtx': mtx.tolist(), 
 #                   'dist': dist.tolist(), 
 
-with open('./LogitechC310.yaml', 'r') as stream:
+with open('./LogitechC310_static_checkerboard.yaml', 'r') as stream:
     try:
         calib_params = yaml.safe_load(stream)
     except yaml.YAMLError as exc:
         print(exc)
 
 # path to distorted images
-# images = glob.glob('./images-static_camera/*.jpg')
-images = glob.glob('./images-static_checkerboard/*.jpg')
+images = glob.glob('./images-static_camera/*.jpg')
+# images = glob.glob('./images-static_checkerboard/*.jpg')
 ImageCount = 0
 
 for fname in images:

@@ -62,3 +62,11 @@ Radial distortion:       [    0.0650 +/- 0.0212       -0.1310 +/- 0.4461        
 Tangential distortion:   [   -0.0039 +/- 0.0006       -0.0019 +/- 0.0009  ]
 
 ```
+
+# Scripts
+
+|Script|Description|
+|:---|:---|
+|captureImages.py|This script captures images from the camera and saves them in the specified directory.|
+|calibrateCamera.py|This script calibrates the camera and saves the calibration parameters in the specified yaml file.|
+|undistortImage.py|This script undistorts the image using the calibration parameters.|
