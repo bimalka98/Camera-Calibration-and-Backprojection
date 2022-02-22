@@ -11,9 +11,13 @@
 *3D points are called **object points** and 2D image points are called **image points.***
 
 ## *Note*
-> Image size: 640 x 480<br>
-> Camera: Logitech C310 HD Webcam, 720p Video<br>
-> Square Size of Checkerboard: 30 mm
+* **Image size:** 640 x 480 pixels<br>
+* **Camera:** [Logitech C310 HD Webcam, 720p Video](https://support.logi.com/hc/en-us/articles/360023464573-Logitech-HD-Webcam-C310-Technical-Specifications)<br>
+* **Square Size of Checkerboard:** 30 mm (*useful in camera calibration*)<br>
+* **Lens and Sensor Type:**	Plastic, CMOS<br>
+* **Focus Type:**	Fixed<br>
+* **Field of View (FOV):**	60°<br>
+* **Focal Length:**	4.4mm (*useful in 2D to 3D coordinate transformation*)<br>
 
 ## Method 1: Static camera and chess boards are placed at different locations
 
