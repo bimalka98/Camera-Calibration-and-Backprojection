@@ -1,12 +1,19 @@
 # [Camera Calibration using OpenCV](https://docs.opencv.org/3.4/dc/dbb/tutorial_py_calibration.html)
 
+***Text copied from OpenCV documentation***
+
 *The important input data needed for calibration of the camera is the set of 3D real world points and the corresponding 2D coordinates of these points in the image.* 
 
-1. 2D image points are OK which we can easily find from the image. (These image points are locations where two black squares touch each other in chess boards)
+1. 2D image points are OK which we can easily find from the image. These image points are locations where two black squares touch each other in chess boards.
 
 2. What about the 3D points from real world space? Those images are taken from a static camera and chess boards are placed at different locations and orientations. So we need to know (X,Y,Z) values. But for simplicity, we can say chess board was kept stationary at XY plane, (so Z=0 always) and camera was moved accordingly. This consideration helps us to find only X,Y values. Now for X,Y values, we can simply pass the points as (0,0), (1,0), (2,0), ... which denotes the location of points. In this case, the results we get will be in the scale of size of chess board square. But if we know the square size, (say 30 mm), we can pass the values as (0,0), (30,0), (60,0), ... . Thus, we get the results in mm. (In this case, we don't know square size since we didn't take those images, so we pass in terms of square size).
 
 *3D points are called **object points** and 2D image points are called **image points.***
+
+## *Note*
+> Image size: 640 x 480<br>
+> Camera: Logitech C310 HD Webcam, 720p Video<br>
+> Square Size of Checkerboard: 30 mm
 
 ## Method 1: Static camera and chess boards are placed at different locations
 
@@ -22,7 +29,7 @@ Distortion Coefficients:
 ```
 ![](figures/srcimgs.png)
 
-## Method 2: Chess board was kept stationary at XY plane, (so Z=0 always) and camera was moved accordingly
+## Method 2: Stationary Chess board kept  at XY plane, (so Z=0 always) and camera was moved accordingly
 
 ```
 Camera Matrix:
@@ -37,7 +44,7 @@ Distortion Coefficients:
 
 ![](figures/srcimgs2.png)
 
-# Results obtained using MATLAB Camera Calibrator Toolbox
+# [Results obtained using MATLAB Camera Calibrator Toolbox](https://www.mathworks.com/help/vision/ug/using-the-single-camera-calibrator-app.html)
 
 ## Method 1: Static camera
 
@@ -51,7 +58,7 @@ Tangential distortion:   [    0.0086 +/- 0.0007        0.0074 +/- 0.0009  ]
 
 ```
 
-## Method 2: Chess board was kept stationary
+## Method 2: Stationary Chess board kept  at XY plane
 
 ```
 Intrinsics
@@ -67,6 +74,6 @@ Tangential distortion:   [   -0.0039 +/- 0.0006       -0.0019 +/- 0.0009  ]
 
 |Script|Description|
 |:---|:---|
-|captureImages.py|This script captures images from the camera and saves them in the specified directory.|
-|calibrateCamera.py|This script calibrates the camera and saves the calibration parameters in the specified yaml file.|
-|undistortImage.py|This script undistorts the image using the calibration parameters.|
+|**captureImages.py**|*This script captures images from the camera and saves them in the specified directory.*|
+|**calibrateCamera.py**|*This script calibrates the camera and saves the calibration parameters in the specified yaml file.*|
+|**undistortImage.py**|*This script undistorts the image using the calibration parameters.*|
