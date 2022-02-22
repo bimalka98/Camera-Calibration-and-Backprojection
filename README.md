@@ -18,6 +18,7 @@ Camera Matrix:
 
 Distortion Coefficients:
  [[0.00785561 0.41494786 0.00960021 0.00577902 1.53307777]]
+
 ```
 ![](figures/srcimgs.png)
 
@@ -31,6 +32,7 @@ Camera Matrix:
 
 Distortion Coefficients:
  [[ 2.50484044e-02  4.93438361e-01 -4.12081388e-03  3.21794242e-05 -3.72201958e-01]]
+
 ```
 
 ![](figures/srcimgs2.png)
@@ -42,10 +44,21 @@ Distortion Coefficients:
 ```
 Intrinsics
 ----------
-Focal length (pixels):   [  824.7671 +/- 0.8882      824.4779 +/- 0.8436  ]
-Principal point (pixels):[  320.9127 +/- 0.4406      244.1256 +/- 0.5253  ]
-Radial distortion:       [    0.0353 +/- 0.0098        0.3445 +/- 0.0928  ]
+Focal length (pixels):   [  825.1877 +/- 0.8995      824.7388 +/- 0.8549  ]
+Principal point (pixels):[  334.5468 +/- 1.7715      259.1855 +/- 1.3978  ]
+Radial distortion:       [    0.0456 +/- 0.0209       -0.0419 +/- 0.4124        2.9397 +/- 2.3712  ]
+Tangential distortion:   [    0.0086 +/- 0.0007        0.0074 +/- 0.0009  ]
 
 ```
 
 ## Method 2: Chess board was kept stationary
+
+```
+Intrinsics
+----------
+Focal length (pixels):   [  821.2748 +/- 0.7316      820.7591 +/- 0.8375  ]
+Principal point (pixels):[  319.7093 +/- 1.7312      236.3201 +/- 1.1469  ]
+Radial distortion:       [    0.0650 +/- 0.0212       -0.1310 +/- 0.4461        2.1357 +/- 2.7396  ]
+Tangential distortion:   [   -0.0039 +/- 0.0006       -0.0019 +/- 0.0009  ]
+
+```

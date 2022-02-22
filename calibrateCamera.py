@@ -32,8 +32,8 @@ objpoints = [] # 3d point in real world space
 imgpoints = [] # 2d points in image plane.
 
 # Extracting path of individual image stored in a given directory
-#images = glob.glob('./images-static_camera/*.jpg')
-images = glob.glob('./images-static_checkerboard/*.jpg')
+images = glob.glob('./images-static_camera/*.jpg')
+# images = glob.glob('./images-static_checkerboard/*.jpg')
 
 ImageCount = 0
 WindowSize = (5,5) # Half of the side length of the search window for cornerSubPix()
@@ -89,7 +89,8 @@ print( mtx.shape, dist.shape)
 # Saving the calibration parameters in a yaml file
 calibration = {'ret': ret, 'mtx': mtx.tolist(), 'dist': dist.tolist()}
 
-with open('LogitechC310_static_checkerboard.yaml', 'w') as outfile:
+# with open('LogitechC310_static_checkerboard.yaml', 'w') as outfile:
+with open('LogitechC310_static_camera.yaml', 'w') as outfile:
         yaml.dump(calibration, outfile)
 
 # print the camera calibration matrix and distortion coefficients
