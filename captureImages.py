@@ -10,10 +10,11 @@ Created on Mon Feb 21 10:08:05 2022
 import cv2 as cv
 
 # Initialize the usb camera
-camera = cv.VideoCapture(1)
+DeviceId = 0
+camera = cv.VideoCapture(DeviceId)
 
 # Define the directory where the images will be saved
-directory = "./images/"
+directory = "./raw_images/"
 
 # number of the image
 image_number = 0
