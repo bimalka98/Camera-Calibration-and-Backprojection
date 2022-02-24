@@ -10,7 +10,7 @@
 
 *3D points are called **object points** and 2D image points are called **image points.***
 
-### Note that in openCV `cv.calibrateCamera()` expects the real world coordinates of the checker board pattern intersect points with respect to a known coordinate system! They have generated those coordinates simply by a `np.mgrid()` using the number of intersecting points in horizontal and vertical direction in our checkerboard. This coordinate system must be considered when we map 2D image points from image to the real world and therefore shoul be a fixed one.
+### Note that in openCV [`cv.calibrateCamera()`](https://docs.opencv.org/4.x/d9/d0c/group__calib3d.html#ga3207604e4b1a1758aa66acb6ed5aa65d) expects the real world coordinates of the checker board pattern intersect points with respect to a known coordinate system! They have generated those coordinates simply by a `np.mgrid()` using the number of intersecting points in horizontal and vertical direction in our checkerboard. This coordinate system must be considered when we map 2D image points from image to the real world and therefore shoul be a fixed one.
 
 ## *Note*
 * **Image size:** 640 x 480 pixels<br>
@@ -50,7 +50,7 @@ Rotational Vector:
 ------------------------------------------------------------
 ```
 
-**Output vector of rotation vectors (Rodrigues ) estimated for each pattern view 
+**Output vector of rotation vectors ([Rodrigues](https://docs.opencv.org/4.x/d9/d0c/group__calib3d.html#ga61585db663d9da06b68e70cfbf6a1eac) ) estimated for each pattern view 
 (e.g. std::vector<cv::Mat>>). That is, each i-th rotation vector together with 
 the corresponding i-th translation vector, 
 brings the calibration pattern from the object coordinate space 
