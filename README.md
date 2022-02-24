@@ -10,7 +10,7 @@
 
 *3D points are called **object points** and 2D image points are called **image points.***
 
-### Note that in openCV `cv.calibrateCamera()` expects the real world coordinates of the checker board pattern intersect points with respect to a known coordinate system! They have generated those coordinates simply by a `np.mgrid()` using the number of intersecting points in horizontal and vertical direction in our checkerboard. This coordinate system must be considered when we map 2D image points from image to the real world and therefore shoul be a fixed one.
+### Note that in openCV [`cv.calibrateCamera()`](https://docs.opencv.org/4.x/d9/d0c/group__calib3d.html#ga3207604e4b1a1758aa66acb6ed5aa65d) expects the real world coordinates of the checker board pattern intersect points with respect to a known coordinate system! They have generated those coordinates simply by a `np.mgrid()` using the number of intersecting points in horizontal and vertical direction in our checkerboard. This coordinate system must be considered when we map 2D image points from image to the real world and therefore shoul be a fixed one.
 
 ## *Note*
 * **Image size:** 640 x 480 pixels<br>
@@ -21,8 +21,15 @@
 * **Field of View (FOV):**	60°<br>
 * **Focal Length:**	4.4mm (*useful in 2D to 3D coordinate transformation*)<br>
 
+# View of the camera: `raw_images/image36.jpg`
+
+|*raw image* | *processed image*|
+|:----:|:----:|
+|<img src="raw_images/image36.jpg" width="500" />| <img src="processed_images/image26.jpg" width="500" /> |
+
 ## Calibration Parameters
 ```
+------------------------------------------------------------
 Camera Matrix:
  [[806.14517655   0.         323.87146568]
  [  0.         811.24976479 236.50327395]
@@ -30,6 +37,25 @@ Camera Matrix:
 ------------------------------------------------------------ 
 
 Distortion Coefficients:
- [[-3.80673064e-02  1.00564222e+00 -1.28647942e-03  3.27139495e-03 -1.79549627e+00]]
- 
+ [[-3.80673064e-02  1.00564222e+00 -1.28647942e-03  3.27139495e-03 -1.79549627e+00]] 
+------------------------------------------------------------
+
+image36.jpg: 
+Translational Vector: 
+ [-122.22738712] [-117.38511046] [656.31453705]
+------------------------------------------------------------
+
+Rotational Vector:    
+ [2.10602313] [2.15303455] [-0.19642816]
+------------------------------------------------------------
 ```
+
+**Output vector of rotation vectors ([Rodrigues](https://docs.opencv.org/4.x/d9/d0c/group__calib3d.html#ga61585db663d9da06b68e70cfbf6a1eac) ) estimated for each pattern view 
+(e.g. std::vector<cv::Mat>>). That is, each i-th rotation vector together with 
+the corresponding i-th translation vector, 
+brings the calibration pattern from the object coordinate space 
+(in which object points are specified)  to the camera coordinate space.
+In more technical terms, the tuple of the i-th rotation and translation vector 
+performs a change of basis from object coordinate space to camera coordinate space.
+Due to its duality, this tuple is equivalent to the position of the calibration 
+pattern with respect to the camera coordinate space.**
