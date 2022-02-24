@@ -20,3 +20,16 @@
 * **Focus Type:**	Fixed<br>
 * **Field of View (FOV):**	60°<br>
 * **Focal Length:**	4.4mm (*useful in 2D to 3D coordinate transformation*)<br>
+
+## Calibration Parameters
+```
+Camera Matrix:
+ [[806.14517655   0.         323.87146568]
+ [  0.         811.24976479 236.50327395]
+ [  0.           0.           1.        ]]
+------------------------------------------------------------ 
+
+Distortion Coefficients:
+ [[-3.80673064e-02  1.00564222e+00 -1.28647942e-03  3.27139495e-03 -1.79549627e+00]]
+ 
+```
