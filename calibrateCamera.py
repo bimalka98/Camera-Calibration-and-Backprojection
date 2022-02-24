@@ -43,8 +43,7 @@ for x in range(PatternSize[1]):
     for y in range(PatternSize[0]):
         ObjectPoints.append([x * SquareSize, y * SquareSize, 0])
 ObjectPoints = np.array(ObjectPoints, dtype=np.float32)
-# print(ObjectPoints)
-# breakpoint()
+
 
 # Arrays to store object points and image points from all the images.
 RealPoints = []  # 3d point in real world space
@@ -100,6 +99,8 @@ for _filename in Images:
     print("-"*50)
 
 cv.destroyAllWindows()
+
+# print("Shape of the images: ", img.shape)
 
 # RealPoints = np.array(RealPoints, dtype=np.float32)
 # ImagePoints = np.array(ImagePoints, dtype=np.float32)
