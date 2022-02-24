@@ -33,45 +33,49 @@ ImagePoints = [] # 2d points in image plane.
 # Extracting path of individual image stored in a given directory
 Images = glob.glob('./raw_images/*.jpg')
 
-ImageCount = 0
+ImageCount = int(Images[0][-5])
 WindowSize = (5,5) # Half of the side length of the search window for cornerSubPix()
 
 for _filename in Images:
+
     # Read the image
     img = cv.imread(_filename)
-    print("Reading image {}".format(ImageCount))
+    print("Reading image " + _filename)
+
     # Convert to grayscale
     gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
-    # # otsu thresholding
-    # ret, gray = cv.threshold(gray, 0, 255, cv.THRESH_BINARY_INV + cv.THRESH_OTSU)
-    # cv.imshow('gray', gray)
-    # cv.waitKey(0)
-    
     # Find the chess board corners
     ret, corners = cv.findChessboardCorners(gray, PatternSize, cv.CALIB_CB_ADAPTIVE_THRESH + cv.CALIB_CB_FAST_CHECK + cv.CALIB_CB_NORMALIZE_IMAGE)
     
     # If desired number of corners are found in the image then ret = true
     if ret == True:
-        print("Chessboard Detected in image {}".format(ImageCount))
+        print("Corners found in image " + _filename)
 
-        # RealPoints.append(ObjectPoints)
+        # Append real world object points to the array
+        RealPoints.append(ObjectPoints)
 
         # refining pixel coordinates for given 2d points.
         corners2 = cv.cornerSubPix(gray, corners, WindowSize, (-1,-1), TerminationCriteria)
 
-        # ImagePoints.append(corners2)
+        # Append image points to the array
+        ImagePoints.append(corners2)
 
         # Draw and display the corners
         img = cv.drawChessboardCorners(img, PatternSize, corners2, ret)   
         cv.imshow('Image' + str(ImageCount),img)
         cv.waitKey(0)
 
-        # save the image
+         # save the processed image
         cv.imwrite('./processed_images/' + 'image'+ str(ImageCount) +'.jpg', img)
+    
     else:
-        print("No Chessboard Detected in image {}".format(ImageCount))
+        print("No Chessboard Detected in" + _filename)
     
     ImageCount+=1
     print("-"*50)
+
 cv.destroyAllWindows()
+
+# camera calibration
+
