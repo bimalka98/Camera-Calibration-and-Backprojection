@@ -49,3 +49,13 @@ Rotational Vector:
  [2.10602313] [2.15303455] [-0.19642816]
 ------------------------------------------------------------
 ```
+
+**Output vector of rotation vectors (Rodrigues ) estimated for each pattern view 
+(e.g. std::vector<cv::Mat>>). That is, each i-th rotation vector together with 
+the corresponding i-th translation vector, 
+brings the calibration pattern from the object coordinate space 
+(in which object points are specified)  to the camera coordinate space.
+In more technical terms, the tuple of the i-th rotation and translation vector 
+performs a change of basis from object coordinate space to camera coordinate space.
+Due to its duality, this tuple is equivalent to the position of the calibration 
+pattern with respect to the camera coordinate space.**
