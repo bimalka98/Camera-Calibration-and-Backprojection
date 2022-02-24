@@ -35,7 +35,7 @@ mean_focul_length = (camera_matrix[0,0] + camera_matrix[1,1]) / 2
 focul_length_in_mm = 4.4
 
 # Calculate pixles per mm
-pixles_per_mm = round(mean_focul_length / focul_length_in_mm)
+pixles_per_mm = mean_focul_length / focul_length_in_mm
 
 # Assume pixels per mm is the same for x and y 
 mx = pixles_per_mm

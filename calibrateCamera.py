@@ -101,6 +101,18 @@ for _filename in Images:
 
 cv.destroyAllWindows()
 
+# RealPoints = np.array(RealPoints, dtype=np.float32)
+# ImagePoints = np.array(ImagePoints, dtype=np.float32)
+
+# # write image points to a file
+# with open('image_points.txt', 'w') as outfile:
+#     for i in range(len(ProcessedImages)):
+#         outfile.write(ProcessedImages[i] + ' = \n\n [')
+#         for j in range(len(ImagePoints[i])):
+#             outfile.write("[ " + str(ImagePoints[i][j][0][0]) + ', ' + str(ImagePoints[i][j][0][1]) + " ]" + '\n')
+#         outfile.write(']\n\n')
+#         outfile.write('-'*50)
+
 #################################################################
 #                                                               #
 # Calibrate the camera using the image points and object points #
