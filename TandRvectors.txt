@@ -1,0 +1,145 @@
+Output vector of rotation vectors (Rodrigues ) estimated for each pattern view 
+(e.g. std::vector<cv::Mat>>). That is, each i-th rotation vector together with 
+the corresponding i-th translation vector, 
+brings the calibration pattern from the object coordinate space 
+(in which object points are specified)  to the camera coordinate space.
+
+
+In more technical terms, the tuple of the i-th rotation and translation vector 
+performs a change of basis from object coordinate space to camera coordinate space.
+Due to its duality, this tuple is equivalent to the position of the calibration 
+pattern with respect to the camera coordinate space.
+
+
+image0.jpg: 
+Translational Vector: [-122.89319438] [-108.62935044] [658.33041969]
+Rotational Vector: [2.10236197] [2.14346974] [-0.20724431]
+
+image1.jpg: 
+Translational Vector: [-122.89414399] [-108.6192524] [658.32855104]
+Rotational Vector: [2.10212769] [2.14315524] [-0.20748199]
+
+image10.jpg: 
+Translational Vector: [-155.28837963] [-97.43339457] [551.87224758]
+Rotational Vector: [2.182953] [2.26255298] [-0.02560073]
+
+image11.jpg: 
+Translational Vector: [-119.15560808] [-50.89832696] [522.72017062]
+Rotational Vector: [-2.05758366] [-2.10021726] [-0.23093501]
+
+image12.jpg: 
+Translational Vector: [-112.62454319] [-68.06920445] [478.88876658]
+Rotational Vector: [-1.86541731] [-1.99637401] [-0.49319247]
+
+image13.jpg: 
+Translational Vector: [-146.4803188] [0.45076082] [672.95707196]
+Rotational Vector: [-2.64365169] [-1.45207951] [0.6490424]
+
+image14.jpg: 
+Translational Vector: [-150.27642838] [-6.31070239] [681.03604353]
+Rotational Vector: [-2.59167274] [-1.48009219] [0.73252694]
+
+image15.jpg: 
+Translational Vector: [-107.24186223] [-114.77928555] [549.13734147]
+Rotational Vector: [1.87627196] [1.93134587] [0.0998295]
+
+image16.jpg: 
+Translational Vector: [-103.06992105] [-84.77167008] [455.0074441]
+Rotational Vector: [1.78791125] [1.83010534] [0.40507807]
+
+image17.jpg: 
+Translational Vector: [-39.84499937] [-145.07161499] [587.40425362]
+Rotational Vector: [1.35391746] [2.40192853] [0.08424233]
+
+image19.jpg: 
+Translational Vector: [-179.90442138] [-65.68300443] [590.53998781]
+Rotational Vector: [2.34855036] [2.00075221] [-0.46599751]
+
+image2.jpg: 
+Translational Vector: [-122.88743346] [-108.64268826] [658.30018752]
+Rotational Vector: [2.10236716] [2.1434321] [-0.20702812]
+
+image20.jpg: 
+Translational Vector: [-75.7256512] [-129.87902769] [644.0558053]
+Rotational Vector: [-1.57152476] [-2.32913785] [0.37709633]
+
+image21.jpg: 
+Translational Vector: [-101.13288531] [-141.19236013] [600.14628427]
+Rotational Vector: [-1.53837891] [-2.30447482] [0.38207069]
+
+image22.jpg: 
+Translational Vector: [-163.92304338] [-12.33460709] [654.03488719]
+Rotational Vector: [-2.44083589] [-1.54355689] [0.82847507]
+
+image23.jpg: 
+Translational Vector: [-147.70247159] [-27.16633899] [658.6168894]
+Rotational Vector: [-2.43321071] [-1.70938936] [0.63195257]
+
+image24.jpg: 
+Translational Vector: [-121.7798487] [-110.10895102] [549.51712268]
+Rotational Vector: [1.49950729] [1.99110328] [0.3116131]
+
+image25.jpg: 
+Translational Vector: [-96.3469109] [-120.65865913] [619.13627785]
+Rotational Vector: [1.65880556] [2.2253233] [0.20541824]
+
+image26.jpg: 
+Translational Vector: [-139.33385568] [-78.4590888] [713.02625344]
+Rotational Vector: [2.13045765] [2.17659366] [-0.08218578]
+
+image3.jpg: 
+Translational Vector: [-70.05078324] [-83.12644606] [475.05998002]
+Rotational Vector: [1.78729676] [1.88702233] [0.35476131]
+
+image31.jpg: 
+Translational Vector: [-40.91837043] [-80.40248066] [487.66232173]
+Rotational Vector: [1.89082047] [1.92021988] [0.53524493]
+
+image32.jpg: 
+Translational Vector: [-127.19201177] [-51.38160495] [649.33576293]
+Rotational Vector: [-1.99589872] [-2.11317528] [-0.36727001]
+
+image33.jpg: 
+Translational Vector: [-116.74446144] [-77.45733989] [604.13339749]
+Rotational Vector: [-1.84106975] [-1.9806895] [-0.52726738]
+
+image34.jpg: 
+Translational Vector: [-161.58599215] [-37.61394057] [659.0883327]
+Rotational Vector: [-2.37512813] [-1.86138465] [0.39383889]
+
+image35.jpg: 
+Translational Vector: [-118.87492955] [-101.15315389] [723.67027491]
+Rotational Vector: [2.16021281] [2.19750192] [-0.13528799]
+
+image36.jpg: 
+Translational Vector: [-122.22738712] [-117.38511046] [656.31453705]
+Rotational Vector: [2.10602313] [2.15303455] [-0.19642816]
+
+image37.jpg: 
+Translational Vector: [-122.22455384] [-117.38277218] [656.25345773]
+Rotational Vector: [2.10589335] [2.15286489] [-0.19615656]
+
+image38.jpg: 
+Translational Vector: [-122.22789454] [-117.37846404] [656.25180885]
+Rotational Vector: [2.10603689] [2.15306686] [-0.19632003]
+
+image4.jpg: 
+Translational Vector: [-134.46970683] [-73.7975902] [579.83185318]
+Rotational Vector: [1.86872533] [1.89225443] [0.37918318]
+
+image5.jpg: 
+Translational Vector: [-43.04098438] [-85.31495392] [480.59938612]
+Rotational Vector: [1.72444922] [1.74801346] [0.59039126]
+
+image6.jpg: 
+Translational Vector: [-102.19356848] [-90.08616016] [471.86629183]
+Rotational Vector: [1.71282049] [1.77078819] [0.52476449]
+
+image8.jpg: 
+Translational Vector: [-114.51891738] [-91.01265237] [562.28024447]
+Rotational Vector: [-1.9708791] [-2.01698698] [0.56441246]
+
+image9.jpg: 
+Translational Vector: [-118.887467] [-93.40541523] [571.6613281]
+Rotational Vector: [-1.8743545] [-2.01424115] [0.70129295]
+

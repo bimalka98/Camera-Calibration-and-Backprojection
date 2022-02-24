@@ -20,6 +20,13 @@ SquareSize = 30 # size of the PatternSize square in mm
 # termination criteria
 TerminationCriteria = (cv.TERM_CRITERIA_EPS + cv.TERM_CRITERIA_MAX_ITER, 30, 0.001)
 
+
+#################################################################
+#                                                               #
+#                   Extracting the image points                 #
+#                                                               #
+#################################################################
+
 # preparing object points as follows: Z comes out from the plane of the chessboard
 #  _ _ Y(9)
 # |
@@ -48,6 +55,9 @@ Images = glob.glob('./raw_images/*.jpg')
 
 ImageCount = int(Images[0][-5])
 WindowSize = (5,5) # Half of the side length of the search window for cornerSubPix()
+
+# list to store successfully processed images by identifying corners
+ProcessedImages = []
 
 for _filename in Images:
 
@@ -81,6 +91,7 @@ for _filename in Images:
 
          # save the processed image
         cv.imwrite('./processed_images/' + 'image'+ str(ImageCount) +'.jpg', img)
+        ProcessedImages.append(_filename.split('\\')[-1])
     
     else:
         print("No Chessboard Detected in" + _filename)
@@ -90,21 +101,42 @@ for _filename in Images:
 
 cv.destroyAllWindows()
 
-# ++++++++++++++Calibrating the camera++++++++++++++
-
-# height and width of the image: (480, 640, 3)
-h,w = img.shape[:2]
+#################################################################
+#                                                               #
+# Calibrate the camera using the image points and object points #
+#                                                               #
+#################################################################
 
 print('\nCalibrating...')
 ret, mtx, dist, rvecs, tvecs = cv.calibrateCamera(RealPoints, ImagePoints, gray.shape[::-1], None, None)
 print("\nCalibration Successful!")
 
 # Saving the calibration parameters in a yaml file
+print("\nSaving the calibration parameters in a yaml file...")
 calibration = {'ret': ret, 'mtx': mtx.tolist(), 'dist': dist.tolist()}
-
 with open('LogitechC310.yaml', 'w') as outfile:
         yaml.dump(calibration, outfile)
 
+# saving translational and rotational vectors into txt file
+print("\nSaving the translation and rotation vectors into txt file...")
+with open('TandRvectors.txt', 'w') as outfile:
+    outfile.write("""Output vector of rotation vectors (Rodrigues ) estimated for each pattern view 
+(e.g. std::vector<cv::Mat>>). That is, each i-th rotation vector together with 
+the corresponding i-th translation vector, 
+brings the calibration pattern from the object coordinate space 
+(in which object points are specified)  to the camera coordinate space.\n
+
+In more technical terms, the tuple of the i-th rotation and translation vector 
+performs a change of basis from object coordinate space to camera coordinate space.
+Due to its duality, this tuple is equivalent to the position of the calibration 
+pattern with respect to the camera coordinate space.\n\n\n""")
+
+    for i in range(len(tvecs)):
+        outfile.write(ProcessedImages[i] + ': \n')
+        outfile.write("Translational Vector: "+ '{} {} {}\n'.format(tvecs[i][0], tvecs[i][1], tvecs[i][2]))
+        outfile.write("Rotational Vector: "+ '{} {} {}\n\n'.format(rvecs[i][0], rvecs[i][1], rvecs[i][2]))
+
 # print the camera calibration matrix and distortion coefficients
-print("-"*60, "\nCamera Matrix: \n", mtx)
-print("-"*60, "\nDistortion Coefficients: \n", dist)
+print("-"*50, "\nCamera Matrix: \n", mtx)
+print("-"*50, "\nDistortion Coefficients: \n", dist)
+print("-"*50)
