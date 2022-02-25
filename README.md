@@ -237,3 +237,38 @@ In more technical terms, the tuple of the i-th rotation and translation vector
 performs a change of basis from object coordinate space to camera coordinate space.
 Due to its duality, this tuple is equivalent to the position of the calibration 
 pattern with respect to the camera coordinate space.**
+
+# Image to Real world Transformation: progress with the commits
+
+<details>
+  <summary>25/02/2022: Backprojection implemenation v1: Reference Book: HZ</summary>
+  <br> Page 6: https://engineering.purdue.edu/kak/computervision/ECE661Folder/Lecture17.pdf
+
+  ```
+ _3Dto2Dtransformation shape:  (3, 4)
+Homogeneous Image Coord:  [172.5165863   90.92301178   1.        ]
+Real World Coordinates:  [-0.28 -0.96  0.3   1.  ] 
+ --------------------------------------------------------------------------------
+Homogeneous Image Coord:  [210.02690125  91.49441528   1.        ]
+Real World Coordinates:  [-2.42 28.75 -5.05  1.  ]
+ --------------------------------------------------------------------------------
+Homogeneous Image Coord:  [247.15162659  91.94928741   1.        ]
+Real World Coordinates:  [ -4.66  58.63 -10.41   1.  ]
+ --------------------------------------------------------------------------------
+Homogeneous Image Coord:  [284.48806763  92.66139984   1.        ]
+Real World Coordinates:  [ -6.75  89.2  -15.95   1.  ]
+ --------------------------------------------------------------------------------
+Homogeneous Image Coord:  [321.52206421  93.30630493   1.        ]
+Real World Coordinates:  [ -8.91 120.02 -21.53   1.  ]
+ --------------------------------------------------------------------------------
+Homogeneous Image Coord:  [358.53991699  94.29839325   1.        ]
+Real World Coordinates:  [-10.83 151.37 -27.3    1.  ]
+ --------------------------------------------------------------------------------
+Homogeneous Image Coord:  [396.13839722  95.03894806   1.        ]
+Real World Coordinates:  [-13.03 183.76 -33.18   1.  ]
+ --------------------------------------------------------------------------------
+Homogeneous Image Coord:  [433.16867065  95.80253601   1.        ]
+Real World Coordinates:  [-15.2  216.21 -39.09   1.  ]
+ --------------------------------------------------------------------------------
+  ```  
+</details>

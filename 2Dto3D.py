@@ -56,32 +56,32 @@ with open('./transformations_image36.yaml', 'r') as stream2:
 
 _3Dto2Dtransformation = np.array(transform_params['_3Dto2Dtransformation']).reshape(3,4)
 
-# get the shape of _3Dto2Dtransformation
+# get the shape of _3Dto2Dtransformation (projection matrix)
 print("_3Dto2Dtransformation shape: ", _3Dto2Dtransformation.shape)
 
-matrix2 = _3Dto2Dtransformation.T @ _3Dto2Dtransformation
-print("matrix2: \n", matrix2)
+# Doucmentaion: page 5 of https://engineering.purdue.edu/kak/computervision/ECE661Folder/Lecture17.pdf
+# projection matrix is a 3x4 matrix: therefore inverse can not be found.
+# Therefore, we need to find the pseudo inverse of the projection matrix.
 
+matrix2 =   _3Dto2Dtransformation @ _3Dto2Dtransformation.T
 # get the inverse of the matrix2
-alpha = 5e-5
 matrix2_inv = np.linalg.inv(matrix2)
+# get the pseudo inverse of the _3Dto2Dtransformation
+_3Dto2Dtransformation_pseudo_inv =  _3Dto2Dtransformation.T @ matrix2_inv
 
 ## scale 
-scale_lambda = 656.31453705
-
+scale = 656.31453705 # (Z in mm distance along the principal axis from the camera coord system's origin to the object plane.) 
 
 for i in range(8):
     homogeneous_image_coord = np.array([corners2[i][0][0], corners2[i][0][1], 1])
-    print("Homogeneous Image Coord: \n", homogeneous_image_coord)
+    print("Homogeneous Image Coord: ", homogeneous_image_coord)
 
     # multiply with the scaling factor lambda
-    homogeneous_image_coord = homogeneous_image_coord*scale_lambda
-
-    # multiply with the transpose of the transformation matrix
-    matrix1 = _3Dto2Dtransformation.T @ homogeneous_image_coord
+    homogeneous_image_coord = homogeneous_image_coord * scale
 
     # multiply with the inverse of matrix 2
-    homogeneous_real_coord = matrix2_inv @ matrix1
+    homogeneous_real_coord = _3Dto2Dtransformation_pseudo_inv @ homogeneous_image_coord
+    homogeneous_real_coord = np.round(homogeneous_real_coord/homogeneous_real_coord[3], 2)
 
     # print the real world coordinates
-    print("Real World Coordinates: ", homogeneous_real_coord)
+    print("Real World Coordinates: ", homogeneous_real_coord,"\n" ,'-'*80)
