@@ -244,6 +244,9 @@ pattern with respect to the camera coordinate space.**
   <summary>25/02/2022: Backprojection implemenation v1: Reference Book: HZ</summary>
   <br> Page 6: https://engineering.purdue.edu/kak/computervision/ECE661Folder/Lecture17.pdf
 
+ 
+ *Note that there is a nearly 30 mm distance gap in Y coordinate of the resulted World coordinae. That indicates we are heading the correct direction towrads the implementation.*
+ 
   ```
  _3Dto2Dtransformation shape:  (3, 4)
 Homogeneous Image Coord:  [172.5165863   90.92301178   1.        ]
