@@ -29,6 +29,7 @@ transformation_matrix[:3,3] = translation_vector
 transformation_matrix[3,3] = 1
 print("Transformation Matrix: \n", transformation_matrix)
 
+
 ## multiply the camera matrix with the transformation matrix to get the complete
 ## transformation matrix from real world to image plane
 
@@ -46,28 +47,24 @@ RealWorldPoints = np.array([[0,0,0], [0,1,0], [0,2,0], [0,3,0]]) *30 # 30mm is t
 RealWorldPoints = np.concatenate((RealWorldPoints, np.ones((RealWorldPoints.shape[0], 1))), axis=1)
 print("Real World Points: \n", RealWorldPoints)
 
+scale_lambda = 0
 # Transform the real world points to image plane
 for point in RealWorldPoints:
     imagepoint = _3Dto2Dtransformation @ point.T # [lambda*x, lambda*y, lambda]
+    print("Lambda: ", imagepoint[-1]); scale_lambda = imagepoint[-1]
     imagepoint = imagepoint/imagepoint[-1]  # devide by lambda to get the image plane coords
     print(imagepoint)
 
-# Target image plane coords
+# Target image plane coords to compare with the output of the above code
 # [ 173.54767, 91.62902 ]
 # [ 210.7686, 92.32755 ]
 # [ 247.47551, 92.77607 ]
 # [ 284.47098, 93.51474 ]
 
-# calculates mean of the focal lengths
-mean_focul_length = (camera_matrix[0,0] + camera_matrix[1,1]) / 2
+# save transformation matrix and other useful vectors to a yaml file
+data = {'rotation_vector': rotation_vector.tolist(), 
+        'translation_vector':translation_vector.tolist(),  
+        'transformation_matrix': transformation_matrix.tolist()}
 
-# Focul length in mm as specified in the product technical specification
-focul_length_in_mm = 4.4
-
-# Calculate pixles per mm
-pixles_per_mm = mean_focul_length / focul_length_in_mm
-
-# Assume pixels per mm is the same for x and y 
-mx = pixles_per_mm
-my = pixles_per_mm
-sacling_matrix = np.array([[mx, 0, 0], [0, my, 0], [0, 0, 1]])
+with open('./transformations_image36.yaml', 'w') as outfile:
+    yaml.dump(data, outfile)
