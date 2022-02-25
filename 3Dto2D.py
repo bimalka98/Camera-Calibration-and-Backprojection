@@ -64,7 +64,8 @@ for point in RealWorldPoints:
 # save transformation matrix and other useful vectors to a yaml file
 data = {'rotation_vector': rotation_vector.tolist(), 
         'translation_vector':translation_vector.tolist(),  
-        'transformation_matrix': transformation_matrix.tolist()}
+        'transformation_matrix': transformation_matrix.tolist(),
+        '_3Dto2Dtransformation': _3Dto2Dtransformation.tolist()}
 
 with open('./transformations_image36.yaml', 'w') as outfile:
     yaml.dump(data, outfile)
