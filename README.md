@@ -275,3 +275,7 @@ Real World Coordinates:  [-15.2  216.21 -39.09   1.  ]
  --------------------------------------------------------------------------------
   ```  
 </details>
+
+# Reference Paper 
+
+Siswantoro J., Prabuwono A.S., Abdullah A. (2013) ***Real World Coordinate from Image Coordinate Using Single Calibrated Camera Based on Analytic Geometry***. In: Noah S.A. et al. (eds) Soft Computing Applications and Intelligent Systems. M-CAIT 2013. Communications in Computer and Information Science, vol 378. Springer, Berlin, Heidelberg. https://doi.org/10.1007/978-3-642-40567-9_1
