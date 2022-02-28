@@ -72,16 +72,17 @@ _3Dto2Dtransformation_pseudo_inv =  _3Dto2Dtransformation.T @ matrix2_inv
 ## scale 
 scale = 656.31453705 # (Z in mm distance along the principal axis from the camera coord system's origin to the object plane.) 
 
-for i in range(8):
-    homogeneous_image_coord = np.array([corners2[i][0][0], corners2[i][0][1], 1])
-    print("Homogeneous Image Coord: ", homogeneous_image_coord)
+for i in range(len(corners2)):
+    print("Point: {}".format(i+1))
+    homogeneous_image_coord = np.array([corners2[i][0][0], corners2[i][0][1], 1]).astype(np.int16)
+    print("Homogeneous Image Coord in pixels: ", homogeneous_image_coord)
 
     # multiply with the scaling factor lambda
     homogeneous_image_coord = homogeneous_image_coord * scale
 
     # multiply with the inverse of matrix 2
     homogeneous_real_coord = _3Dto2Dtransformation_pseudo_inv @ homogeneous_image_coord
-    homogeneous_real_coord = np.round(homogeneous_real_coord/homogeneous_real_coord[3], 2)
+    homogeneous_real_coord = np.round(homogeneous_real_coord/homogeneous_real_coord[3], decimals=2)
 
     # print the real world coordinates
-    print("Real World Coordinates: ", homogeneous_real_coord,"\n" ,'-'*80)
+    print("Real World Coordinates in mm: ", homogeneous_real_coord,"\n" ,'-'*80, "\n")
