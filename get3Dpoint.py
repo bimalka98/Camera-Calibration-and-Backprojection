@@ -74,8 +74,8 @@ print("Homogeneous image points: \n", image_points_hom)
 # system using Eq. (3).
 
 ## get the rotation and translation vectors corresponding to the static camera field of view
-rotation_vector = np.array([2.10602313, 2.15303455, -0.19642816])
-translation_vector = np.array([-122.22738712, -117.38511046, 656.31453705]).T
+rotation_vector = np.array([2.10602313, 2.15303455, -0.19642816]).reshape(3,1)
+translation_vector = np.array([-122.22738712, -117.38511046, 656.31453705]).reshape(3,1)
 
 # finding the camera centre Cc in real world coordinate system.
 ## get the rotation matrix from rotation vector
@@ -86,7 +86,38 @@ C = - np.linalg.inv(rotation_matrix) @ translation_vector
 print("Camera Centre in world coordinate: \n", C)
 
 
-# ---------------------------------------------------------------------------------
-# Step 4. Find the coordinate of p (ximw, yimw, zimw) in real world 
-# coordinate system using Eq. (7)
+for point in image_points_hom:
+    print('-'*50)
+    print("Image point: ", point)
 
+    # ---------------------------------------------------------------------------------
+    # Step 4. Find the coordinate of p (ximw, yimw, zimw) in real world 
+    # coordinate system using Eq. (7)
+
+    # from eq. 4, 5, 6
+    x_imc = (point[0] - cx)/sx
+    y_imc = (point[1] - cy)/sy
+    z_imc = 1* focul_length_in_mm
+    
+    point_in_camera_coordinate = np.array([x_imc, y_imc, z_imc]).reshape(3,1)
+    print("Point in camera coordinate: \n", point_in_camera_coordinate)
+
+    # from eq. 7
+    point_in_world_coordinate = np.linalg.inv(rotation_matrix) @ (point_in_camera_coordinate - translation_vector)
+    print("Point in world coordinate: \n", point_in_world_coordinate)
+
+    # equation of the plane where the point lies in real world coordinate system
+    # equa 10: Z = 0 plane. store it in an array in standard form ax+by+cz = d
+    plane_equation = np.array([0, 0, 1, 0]) # a, b, c, d
+    
+    # calculate the parameter t using eq. 11 
+    t = (plane_equation[-1] - np.dot(plane_equation[0:3], C)) / np.dot(plane_equation[0:3], (point_in_world_coordinate - C))
+    print("t: ", t)
+
+    # ---------------------------------------------------------------------------------
+    # Step 5. Approximate the coordinate of P in real world coordinate system using Eq.
+    # (12), (13), and (14).
+
+    # from eq. 12, 13, 14
+    approximated_world_coord = C + t * (point_in_world_coordinate - C)
+    print("Approximated world coordinate: \n", approximated_world_coord)
