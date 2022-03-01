@@ -10,7 +10,7 @@
 
 *3D points are called **object points** and 2D image points are called **image points.***
 
-### Note that in openCV [`cv.calibrateCamera()`](https://docs.opencv.org/4.x/d9/d0c/group__calib3d.html#ga3207604e4b1a1758aa66acb6ed5aa65d) expects the real world coordinates of the checker board pattern intersect points with respect to a known coordinate system! They have generated those coordinates simply by a `np.mgrid()` using the number of intersecting points in horizontal and vertical direction in our checkerboard. This coordinate system must be considered when we map 2D image points from image to the real world and therefore shoul be a fixed one.
+### Note that in openCV [`cv.calibrateCamera()`](https://docs.opencv.org/4.x/d9/d0c/group__calib3d.html#ga3207604e4b1a1758aa66acb6ed5aa65d) expects the real world coordinates of the checker board pattern intersect points with respect to a known coordinate system! This coordinate system must be considered when we map 2D image points from image to the real world and therefore shoul be a fixed and known coordinate system.
 
 ## *Note*
 * **Image size:** 640 x 480 pixels<br>
@@ -68,61 +68,6 @@ Second Row
  [ 30. 210.   0.]
  [ 30. 240.   0.]
 
-Third Row
- [ 60.   0.   0.]
- [ 60.  30.   0.]
- [ 60.  60.   0.]
- [ 60.  90.   0.]
- [ 60. 120.   0.]
- [ 60. 150.   0.]
- [ 60. 180.   0.]
- [ 60. 210.   0.]
- [ 60. 240.   0.]
-
-...
- [ 90.   0.   0.]
- [ 90.  30.   0.]
- [ 90.  60.   0.]
- [ 90.  90.   0.]
- [ 90. 120.   0.]
- [ 90. 150.   0.]
- [ 90. 180.   0.]
- [ 90. 210.   0.]
- [ 90. 240.   0.]
-
-...
- [120.   0.   0.]
- [120.  30.   0.]
- [120.  60.   0.]
- [120.  90.   0.]
- [120. 120.   0.]
- [120. 150.   0.]
- [120. 180.   0.]
- [120. 210.   0.]
- [120. 240.   0.]
-
-...
- [150.   0.   0.]
- [150.  30.   0.]
- [150.  60.   0.]
- [150.  90.   0.]
- [150. 120.   0.]
- [150. 150.   0.]
- [150. 180.   0.]
- [150. 210.   0.]
- [150. 240.   0.]
-
-...
- [180.   0.   0.]
- [180.  30.   0.]
- [180.  60.   0.]
- [180.  90.   0.]
- [180. 120.   0.]
- [180. 150.   0.]
- [180. 180.   0.]
- [180. 210.   0.]
- [180. 240.   0.]]
-
 ```
 
 
@@ -169,62 +114,6 @@ Second Row
 [ 394.54123, 131.55125 ]
 [ 432.02014, 132.50407 ]
 [ 469.7123, 133.17534 ]
-
-Third row
-[ 169.62589, 163.48984 ]
-[ 207.46173, 164.22824 ]
-[ 244.51976, 164.52423 ]
-[ 281.93274, 164.9935 ]
-[ 319.34958, 166.34975 ]
-[ 356.41205, 167.28563 ]
-[ 394.31174, 168.02405 ]
-[ 431.93896, 168.6989 ]
-[ 470.23483, 169.49594 ]
-
-...
-[ 167.73346, 200.23148 ]
-[ 205.58194, 200.75142 ]
-[ 243.1283, 201.36891 ]
-[ 280.80374, 201.77411 ]
-[ 318.48804, 203.30768 ]
-[ 355.8776, 204.15332 ]
-[ 393.94986, 204.82649 ]
-[ 432.0001, 205.57896 ]
-[ 470.39276, 206.30649 ]
-
-...
-[ 165.46951, 237.35175 ]
-[ 203.698, 238.09941 ]
-[ 241.50809, 238.54573 ]
-[ 279.67838, 239.42378 ]
-[ 317.6305, 240.6864 ]
-[ 355.47403, 241.80818 ]
-[ 393.743, 242.63362 ]
-[ 432.0229, 243.2718 ]
-[ 470.79486, 243.9435 ]
-
-...
-[ 163.45647, 275.31726 ]
-[ 201.74608, 276.00104 ]
-[ 240.13731, 276.88266 ]
-[ 278.50775, 277.63733 ]
-[ 316.65363, 278.87833 ]
-[ 355.05225, 279.8575 ]
-[ 393.56052, 280.53806 ]
-[ 432.25452, 281.38232 ]
-[ 471.35577, 281.9048 ]
-
-...
-[ 161.2164, 313.73767 ]
-[ 200.229, 314.60574 ]
-[ 238.31091, 315.55875 ]
-[ 277.1585, 316.4851 ]
-[ 315.9854, 317.74756 ]
-[ 354.43387, 318.6201 ]
-[ 393.47363, 319.52905 ]
-[ 432.31772, 320.20914 ]
-[ 471.76373, 320.8632 ]
-]
 
 ```
 
