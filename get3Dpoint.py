@@ -13,7 +13,7 @@
 # 2 Department of Mathematics and Sciences, Universitas Surabaya,
 #   Jl. Kali Rungkut Tengilis, Surabaya, 60293, Indonesia
 
-from unicodedata import decimal
+
 import  yaml
 import numpy as np
 import cv2 as cv
