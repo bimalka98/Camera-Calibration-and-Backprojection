@@ -100,11 +100,11 @@ for point in image_points_hom:
     z_imc = 1* focul_length_in_mm
     
     point_in_camera_coordinate = np.array([x_imc, y_imc, z_imc]).reshape(3,1)
-    print("Point in camera coordinate: \n", point_in_camera_coordinate)
+    # print("Point in camera coordinate: \n", point_in_camera_coordinate)
 
     # from eq. 7
     point_in_world_coordinate = np.linalg.inv(rotation_matrix) @ (point_in_camera_coordinate - translation_vector)
-    print("Point in world coordinate: \n", point_in_world_coordinate)
+    # print("Point in world coordinate: \n", point_in_world_coordinate)
 
     # equation of the plane where the point lies in real world coordinate system
     # equa 10: Z = 0 plane. store it in an array in standard form ax+by+cz = d
@@ -112,7 +112,7 @@ for point in image_points_hom:
     
     # calculate the parameter t using eq. 11 
     t = (plane_equation[-1] - np.dot(plane_equation[0:3], C)) / np.dot(plane_equation[0:3], (point_in_world_coordinate - C))
-    print("t: ", t)
+    # print("t: ", t)
 
     # ---------------------------------------------------------------------------------
     # Step 5. Approximate the coordinate of P in real world coordinate system using Eq.
@@ -120,4 +120,4 @@ for point in image_points_hom:
 
     # from eq. 12, 13, 14
     approximated_world_coord = C + t * (point_in_world_coordinate - C)
-    print("Approximated world coordinate: \n", approximated_world_coord)
+    print("Approx: world coord: ", np.round(approximated_world_coord.reshape(3,), decimals=2))
