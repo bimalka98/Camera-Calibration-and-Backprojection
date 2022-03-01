@@ -13,6 +13,7 @@
 # 2 Department of Mathematics and Sciences, Universitas Surabaya,
 #   Jl. Kali Rungkut Tengilis, Surabaya, 60293, Indonesia
 
+from unicodedata import decimal
 import  yaml
 import numpy as np
 import cv2 as cv
@@ -41,7 +42,7 @@ focul_length_in_mm = 4.4
 
 # Calculate pixles per mm
 pixles_per_mm = round(mean_focul_length / focul_length_in_mm)
-print('Pixles per mm: ', pixles_per_mm)
+# print('Pixles per mm: ', pixles_per_mm)
 
 # Assume pixels per mm is the same for x and y 
 sx = sy = pixles_per_mm
@@ -77,7 +78,7 @@ image_points = np.array([[ 171.63728, 127.19049 ],
 
 # convert the image points to homogeneous coordinates
 image_points_hom = np.concatenate((image_points, np.ones((image_points.shape[0], 1))), axis=1)
-print("Homogeneous image points: \n", image_points_hom)
+# print("Homogeneous image points: \n", image_points_hom)
 
 # ---------------------------------------------------------------------------------
 # Step 3. Find the coordinate of projection center Oc in real world coordinate 
@@ -93,12 +94,11 @@ rotation_matrix, _ = cv.Rodrigues(rotation_vector)
 
 ## camera centre C = -R^(-1).t
 C = - np.linalg.inv(rotation_matrix) @ translation_vector
-print("Camera Centre in world coordinate: \n", C)
+# print("Camera Centre in world coordinate: \n", C)
 
 
 for point in image_points_hom:
-    print('-'*50)
-    print("Image point: ", point)
+    print("Image point: ", np.round(point, decimals=2))
 
     # ---------------------------------------------------------------------------------
     # Step 4. Find the coordinate of p (ximw, yimw, zimw) in real world 
@@ -131,3 +131,4 @@ for point in image_points_hom:
     # from eq. 12, 13, 14
     approximated_world_coord = C + t * (point_in_world_coordinate - C)
     print("Approx: world coord: ", np.round(approximated_world_coord.reshape(3,), decimals=2))
+    print("\n", '-'*50)

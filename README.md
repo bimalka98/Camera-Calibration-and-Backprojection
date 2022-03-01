@@ -276,6 +276,55 @@ Real World Coordinates:  [-15.2  216.21 -39.09   1.  ]
   ```  
 </details>
 
+<details>
+  <summary>01/03/2022: Backprojection implemenation using the method specified in the paper.</summary>
+  <br> Paper: https://doi.org/10.1007/978-3-642-40567-9_1
+
+ 
+ *Approximation Successful. Paper Implementation Worked.*
+ 
+  ```
+  Image point:  [171.64 127.19   1.  ]
+Approx: world coord:  [29.97  0.49  0.  ]
+
+ --------------------------------------------------
+Image point:  [209.07 127.81   1.  ]
+Approx: world coord:  [29.84 30.62  0.  ]
+
+ --------------------------------------------------
+Image point:  [246.25 128.52   1.  ]
+Approx: world coord:  [29.79 60.53  0.  ]
+
+ --------------------------------------------------
+Image point:  [283.18 128.65   1.  ]
+Approx: world coord:  [29.27 90.21  0.  ]
+
+ --------------------------------------------------
+Image point:  [320.31 129.63   1.  ]
+Approx: world coord:  [ 29.45 120.06   0.  ]
+
+ --------------------------------------------------
+Image point:  [357.06 130.68   1.  ]
+Approx: world coord:  [ 29.69 149.57   0.  ]
+
+ --------------------------------------------------
+Image point:  [394.54 131.55   1.  ]
+Approx: world coord:  [ 29.77 179.66   0.  ]
+
+ --------------------------------------------------
+Image point:  [432.02 132.5    1.  ]
+Approx: world coord:  [ 29.92 209.72   0.  ]
+
+ --------------------------------------------------
+Image point:  [469.71 133.18   1.  ]
+Approx: world coord:  [ 29.83 239.94   0.  ]
+
+ --------------------------------------------------
+
+  ```  
+
+</details>
+
 # Reference Paper 
 
 Siswantoro J., Prabuwono A.S., Abdullah A. (2013) ***Real World Coordinate from Image Coordinate Using Single Calibrated Camera Based on Analytic Geometry***. In: Noah S.A. et al. (eds) Soft Computing Applications and Intelligent Systems. M-CAIT 2013. Communications in Computer and Information Science, vol 378. Springer, Berlin, Heidelberg. https://doi.org/10.1007/978-3-642-40567-9_1
