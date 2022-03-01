@@ -1,3 +1,7 @@
+# ❄ *The most accurate and latest version of the algorithms and documentations are located in branch `M-CAIT-2013`. Click [here](https://github.com/bimalka98/Camera-Calibration-and-Backprojection/tree/M-CAIT-2013) to visit the branch.*
+
+---
+
 # [Camera Calibration using OpenCV](https://docs.opencv.org/3.4/dc/dbb/tutorial_py_calibration.html)
 
 ***Text copied from OpenCV documentation***
@@ -18,66 +22,3 @@
 * **Focus Type:**	Fixed<br>
 * **Field of View (FOV):**	60°<br>
 * **Focal Length:**	4.4mm (*useful in 2D to 3D coordinate transformation*)<br>
-
-## Method 1: Static camera and chess boards are placed at different locations
-
-```
-Camera Matrix:
- [[824.56316122   0.         329.56730044]
- [  0.         823.63476754 260.06591151]
- [  0.           0.           1.        ]]
-
-Distortion Coefficients:
- [[0.00785561 0.41494786 0.00960021 0.00577902 1.53307777]]
-
-```
-![](figures/srcimgs.png)
-
-## Method 2: Stationary Chess board kept  at XY plane, (so Z=0 always) and camera was moved accordingly
-
-```
-Camera Matrix:
- [[822.63896404   0.         321.51943526]
- [  0.         821.2420443  235.09146444]
- [  0.           0.           1.        ]]
-
-Distortion Coefficients:
- [[ 2.50484044e-02  4.93438361e-01 -4.12081388e-03  3.21794242e-05 -3.72201958e-01]]
-
-```
-
-![](figures/srcimgs2.png)
-
-# [Results obtained using MATLAB Camera Calibrator Toolbox](https://www.mathworks.com/help/vision/ug/using-the-single-camera-calibrator-app.html)
-
-## Method 1: Static camera
-
-```
-Intrinsics
-----------
-Focal length (pixels):   [  825.1877 +/- 0.8995      824.7388 +/- 0.8549  ]
-Principal point (pixels):[  334.5468 +/- 1.7715      259.1855 +/- 1.3978  ]
-Radial distortion:       [    0.0456 +/- 0.0209       -0.0419 +/- 0.4124        2.9397 +/- 2.3712  ]
-Tangential distortion:   [    0.0086 +/- 0.0007        0.0074 +/- 0.0009  ]
-
-```
-
-## Method 2: Stationary Chess board kept  at XY plane
-
-```
-Intrinsics
-----------
-Focal length (pixels):   [  821.2748 +/- 0.7316      820.7591 +/- 0.8375  ]
-Principal point (pixels):[  319.7093 +/- 1.7312      236.3201 +/- 1.1469  ]
-Radial distortion:       [    0.0650 +/- 0.0212       -0.1310 +/- 0.4461        2.1357 +/- 2.7396  ]
-Tangential distortion:   [   -0.0039 +/- 0.0006       -0.0019 +/- 0.0009  ]
-
-```
-
-# Scripts
-
-|Script|Description|
-|:---|:---|
-|**captureImages.py**|*This script captures images from the camera and saves them in the specified directory.*|
-|**calibrateCamera.py**|*This script calibrates the camera and saves the calibration parameters in the specified yaml file.*|
-|**undistortImage.py**|*This script undistorts the image using the calibration parameters.*|
