@@ -1,3 +1,19 @@
+
+### [`get3Dpoint.py`](https://github.com/bimalka98/Camera-Calibration-and-Backprojection/blob/M-CAIT-2013/get3Dpoint.py) script includes the implemetation of the mentioned paper to, backproject image coordinates back to the real world. When the equation of the plane where the real world objects lies, with respect to the real world coordinate system is known.
+
+> **Get equation of a plane is not a big deal when, a point lies on the plane and the normal vector to that plane are known.** 😉
+
+# Scripts
+
+|Script|Description|
+|:---|:---|
+|**captureImages.py**|*This script captures images from the camera and saves them in the specified directory.*|
+|**calibrateCamera.py**|*This script calibrates the camera and saves the calibration parameters in the specified yaml file.*|
+|**2Dto3D.py**|*This script verifies the obtatined parameters through camera calibration.*|
+|**get3Dpoint.py**|*This script backproject image coordinate back to the real world coordinate system through the method specified in the paper.*|
+
+---
+
 # [Camera Calibration using OpenCV](https://docs.opencv.org/3.4/dc/dbb/tutorial_py_calibration.html)
 
 ***Text copied from OpenCV documentation***
